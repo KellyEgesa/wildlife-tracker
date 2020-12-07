@@ -2,15 +2,15 @@ package dao;
 
 import java.util.List;
 
-public interface Sightings {
+public interface SightingsDao {
     //LIST
-    List<Sightings> getAll();
+    List<SightingsDao> getAll();
 
     //CREATE
-    void add (Sightings location);
+    void add (SightingsDao location);
 
     //READ
-    Sightings findById(int id);
+    SightingsDao findById(int id);
 
     //DELETE
     void deleteById(int id);

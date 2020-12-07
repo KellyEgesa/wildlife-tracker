@@ -2,16 +2,16 @@ package dao;
 
 import java.util.List;
 
-public interface Rangers {
+public interface RangersDao {
     //LIST
-    List<Rangers> getAll();
+    List<RangersDao> getAll();
 
     //CREATE
-    void add (Rangers rangers);
+    void add (RangersDao rangers);
 
     //READ
-    Rangers findById(int id);
-    List<Sightings> getRangerSightingsById(int RangersId);
+    RangersDao findById(int id);
+    List<SightingsDao> getRangerSightingsById(int RangersId);
 
     //UPDATE
     void update(int id, String contact);
