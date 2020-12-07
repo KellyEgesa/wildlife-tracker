@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Animal {
+public abstract class Animal {
     private String name;
     private String age;
     private int id;

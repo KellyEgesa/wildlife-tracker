@@ -1,3 +1,4 @@
+import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Sightings {
@@ -5,6 +6,7 @@ public class Sightings {
     private int locationId;
     private int animalId;
     private int id;
+    private Timestamp lastSighting;
 
     public Sightings(int rangersId, int locationId, int animalId) {
         this.rangersId = rangersId;
@@ -30,6 +32,10 @@ public class Sightings {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Timestamp getLastSighting() {
+        return lastSighting;
     }
 
     @Override
