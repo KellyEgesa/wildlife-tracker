@@ -25,4 +25,11 @@ public class LocationTest {
         testLocation.setId(1);
         assertEquals(1, testLocation.getId());
     }
+
+    @Test
+    public void equalsWorksCorrectly_true() {
+        Location testLocation = setUpLocation();
+        Location testSecondLocation = new Location("Near the River");
+        assertTrue(testLocation.equals(testSecondLocation));
+    }
 }

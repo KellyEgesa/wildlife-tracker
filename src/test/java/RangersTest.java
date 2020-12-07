@@ -31,4 +31,11 @@ public class RangersTest {
         testRanger.setId(1);
         assertEquals(1, testRanger.getId());
     }
+
+    @Test
+    public void equalsWorksCorrectly_true() {
+        Rangers testRanger = setUpRanger();
+        Rangers testSecondRanger = new Rangers("kelly.egesa@gmail.com", 158920);
+        assertTrue(testRanger.equals(testSecondRanger));
+    }
 }

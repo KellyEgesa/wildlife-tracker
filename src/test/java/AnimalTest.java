@@ -31,4 +31,11 @@ public class AnimalTest {
         testAnimal.setId(1);
         assertEquals(1, testAnimal.getId());
     }
+
+    @Test
+    public void equalsWorksCorrectly_true() {
+        Animal testAnimal = setUpAnimal();
+        Animal testSecondAnimal = new Animal("Honey Badger", "Young");
+        assertTrue(testAnimal.equals(testSecondAnimal));
+    }
 }

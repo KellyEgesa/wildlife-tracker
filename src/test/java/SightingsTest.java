@@ -43,4 +43,17 @@ public class SightingsTest {
         testSighting.setId(1);
         assertEquals(1, testSighting.getId());
     }
+
+    @Test
+    public void equalsWorksCorrectly_true() {
+        Sightings testSighting = setUpSightings();
+        Animal testAnimal =  new Animal("Honey Badger", "Young");
+        Rangers testRanger =  new Rangers("kelly.egesa@gmail.com", 158920);
+        Location testLocation = new Location("Near the River");
+        testAnimal.setId(1);
+        testRanger.setId(1);
+        testLocation.setId(1);
+        Sightings testSecondSighting = setUpSightings();
+        assertTrue(testSighting.equals(testSecondSighting));
+    }
 }

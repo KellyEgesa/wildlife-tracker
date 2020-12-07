@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Rangers {
     private String contact;
     private int badgeNumber;
@@ -22,5 +24,20 @@ public class Rangers {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Rangers)) return false;
+        Rangers rangers = (Rangers) o;
+        return getBadgeNumber() == rangers.getBadgeNumber() &&
+                getId() == rangers.getId() &&
+                Objects.equals(getContact(), rangers.getContact());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getContact(), getBadgeNumber(), getId());
     }
 }
