@@ -2,7 +2,7 @@ package models;
 
 import java.util.Objects;
 
-public abstract class Animal {
+public class Animal {
     private String name;
     private String age;
     private int id;
