@@ -1,5 +1,7 @@
 import dao.*;
 import models.Animal;
+import models.Location;
+import models.Rangers;
 import models.Sightings;
 import org.sql2o.Sql2o;
 import spark.ModelAndView;
@@ -36,6 +38,20 @@ public class App {
             List<Animal> allAnimals = animalDao.getAll();
             model.put("animals", allAnimals);
             return new ModelAndView(model, "animal.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        Spark.get("/location", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Location> allLocations = locationDao.getAll();
+            model.put("locations", allLocations);
+            return new ModelAndView(model, "location.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        Spark.get("/rangers", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Rangers> allRangers = rangersDao.getAll();
+            model.put("rangers", allRangers);
+            return new ModelAndView(model, "ranger.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }
