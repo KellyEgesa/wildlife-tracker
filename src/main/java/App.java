@@ -78,6 +78,13 @@ public class App {
             return new ModelAndView(model, "form-location.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/post/new/location", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            Location newLocation = new Location(request.queryParams("location"));
+            locationDao.save(newLocation);
+            return new ModelAndView(model, "form-location.hbs");
+        }), new HandlebarsTemplateEngine());
+
         post("/post/new/ranger", ((request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int badgeNumber = Integer.parseInt(request.queryParams("badgeNumber"));
