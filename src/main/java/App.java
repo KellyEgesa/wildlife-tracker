@@ -168,6 +168,21 @@ public class App {
             return new ModelAndView(model, "animal.hbs");
         }, new HandlebarsTemplateEngine());
 
+        Spark.get("/sighting/:value/:id", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String value = request.params("value");
+            int sightingsValueId = Integer.parseInt(request.params("id"));
+            List<Sightings> newSightings = null;
+            if(value.equals("animals")){
+                newSightings = sightingsDao.findByAnimals(sightingsValueId);
+            }else if(value.equals("ranger")){
+                newSightings = sightingsDao.findByRanger(sightingsValueId);
+            }else if (value.equals("location")){
+                newSightings = sightingsDao.findByLocation(sightingsValueId);
+            }
 
+            model.put("sightings", newSightings);
+            return new ModelAndView(model, "sightingsIndividual.hbs");
+        }), new HandlebarsTemplateEngine());
     }
 }

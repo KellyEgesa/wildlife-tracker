@@ -62,7 +62,7 @@ public class Sql2oSightings implements SightingsDao {
 
     @Override
     public List<Sightings> findByRanger(int rangersId) {
-        String sql = "SELECT FROM sightings WHERE rangersId = :rangersId";
+        String sql = "SELECT * FROM sightings WHERE rangersId = :rangersId";
         try (Connection con = DB.sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("rangersId", rangersId)
@@ -72,7 +72,7 @@ public class Sql2oSightings implements SightingsDao {
 
     @Override
     public List<Sightings> findByAnimals(int animalId) {
-        String sql = "SELECT FROM sightings WHERE animalId = :animalId";
+        String sql = "SELECT * FROM sightings WHERE animalId = :animalId";
         try (Connection con = DB.sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("animalId", animalId)
@@ -82,7 +82,7 @@ public class Sql2oSightings implements SightingsDao {
 
     @Override
     public List<Sightings> findByLocation(int locationId) {
-        String sql = "SELECT FROM sightings WHERE locationId = :locationId";
+        String sql = "SELECT * FROM sightings WHERE locationId = :locationId";
         try (Connection con = DB.sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("locationId", locationId)
