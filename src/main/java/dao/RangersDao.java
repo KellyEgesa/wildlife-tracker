@@ -16,9 +16,6 @@ public interface RangersDao {
     Rangers findById(int id);
     List<Sightings> getRangerSightingsById(int RangersId);
 
-    //UPDATE
-    void update(int id, String contact);
-
     //DELETE
     void deleteById(int id);
     void clearAllRangers();

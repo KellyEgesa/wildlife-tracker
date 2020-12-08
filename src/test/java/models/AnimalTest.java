@@ -41,6 +41,11 @@ public class AnimalTest {
         assertTrue(testAnimal.equals(testSecondAnimal));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void animalThrowsErrorWhenAgeIsSetToWrongProperty() {
+        Animal testSecondAnimal = new Animal("Honey Badger", "not old");
+    }
+
     @Test
     public void ageCannotBeSetToTheWrongProperty() {
         String argumentExceptionMessage = null;

@@ -44,7 +44,7 @@ public class Sql2oSightingsTest {
     }
 
     private Sightings setUpSecondSightings() {
-        NonEndangeredSpecie testNonEndangeredSpecie = new NonEndangeredSpecie("Rhino", "Adult");
+        NonEndangeredSpecie testNonEndangeredSpecie = new NonEndangeredSpecie("Rhino", "adult");
         Rangers testRanger = new Rangers("Kelly","kelly123.egesa@gmail.com", 158960);
         Location testLocation = new Location("Near the gate");
         nonEndangeredSpecieDao.save(testNonEndangeredSpecie);
