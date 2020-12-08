@@ -35,7 +35,7 @@ public class Sql2oSightingsTest {
 
     private Sightings setUpSightings() {
         EndangeredSpecie testEndangeredSpecie = new EndangeredSpecie("Honey Badger", "Young", "healthy");
-        Rangers testRanger = new Rangers("kelly.egesa@gmail.com", 158920);
+        Rangers testRanger = new Rangers("Kelly","kelly.egesa@gmail.com", 158920);
         Location testLocation = new Location("Near the River");
         endangeredSpecieDao.save(testEndangeredSpecie);
         rangersDao.save(testRanger);
@@ -45,7 +45,7 @@ public class Sql2oSightingsTest {
 
     private Sightings setUpSecondSightings() {
         NonEndangeredSpecie testNonEndangeredSpecie = new NonEndangeredSpecie("Rhino", "Adult");
-        Rangers testRanger = new Rangers("kelly123.egesa@gmail.com", 158960);
+        Rangers testRanger = new Rangers("Kelly","kelly123.egesa@gmail.com", 158960);
         Location testLocation = new Location("Near the gate");
         nonEndangeredSpecieDao.save(testNonEndangeredSpecie);
         rangersDao.save(testRanger);

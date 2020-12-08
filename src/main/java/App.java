@@ -68,21 +68,41 @@ public class App {
             return new ModelAndView(model, "form-nonendangered.hbs");
         }, new HandlebarsTemplateEngine());
 
-        post("/post/new/animal", (request, response) ->{
+        Spark.get("add/ranger", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            if(request.queryParams("health").isEmpty()){
+            return new ModelAndView(model, "form-rangers.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        Spark.get("add/location", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "form-location.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/post/new/ranger", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int badgeNumber = Integer.parseInt(request.queryParams("badgeNumber"));
+            Rangers newRanger = new Rangers(request.queryParams("name"),
+                    request.queryParams("contactInfo"),
+                    badgeNumber);
+            rangersDao.save(newRanger);
+            return new ModelAndView(model, "form-rangers.hbs");
+        }), new HandlebarsTemplateEngine());
+
+        post("/post/new/animal", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            if (request.queryParams("health").isEmpty()) {
                 EndangeredSpecie newEndangered = new EndangeredSpecie(request.queryParams("name"),
                         request.queryParams("age"),
                         request.queryParams("health"));
                 endangeredSpecieDao.save(newEndangered);
-            }
-            else{
+            } else {
                 NonEndangeredSpecie newNonEndangered = new NonEndangeredSpecie(request.queryParams("name")
-                ,request.queryParams("age"));
+                        , request.queryParams("age"));
                 nonEndangeredSpecieDao.save(newNonEndangered);
             }
-            return  new ModelAndView(model, "form-endagered.hbs");
-        }, new HandlebarsTemplateEngine() );
+            return new ModelAndView(model, "form-endagered.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
     }
 }

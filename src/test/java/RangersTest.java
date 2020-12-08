@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class RangersTest {
     private Rangers setUpRanger(){
-        return new Rangers("kelly.egesa@gmail.com", 158920);
+        return new Rangers("Kelly Egesa","kelly.egesa@gmail.com", 158920);
     }
 
     @Test
@@ -18,6 +18,12 @@ public class RangersTest {
     public void getContactReturnsContactCorrectly() {
         Rangers testRanger = setUpRanger();
         assertEquals("kelly.egesa@gmail.com", testRanger.getContact());
+    }
+
+    @Test
+    public void getNameReturnsCorrectName_Kelly() {
+        Rangers testRanger = setUpRanger();
+        assertEquals("Kelly Egesa",testRanger.getName());
     }
 
     @Test
@@ -36,7 +42,7 @@ public class RangersTest {
     @Test
     public void equalsWorksCorrectly_true() {
         Rangers testRanger = setUpRanger();
-        Rangers testSecondRanger = new Rangers("kelly.egesa@gmail.com", 158920);
+        Rangers testSecondRanger = new Rangers("Bartholomew","kelly.egesa@gmail.com", 158920);
         assertTrue(testRanger.equals(testSecondRanger));
     }
 }

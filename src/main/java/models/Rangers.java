@@ -5,9 +5,11 @@ import java.util.Objects;
 public class Rangers {
     private String contactInfo;
     private int badgeNumber;
+    private String name;
     private int id;
 
-    public Rangers(String contact, int badgeNumber){
+    public Rangers(String name ,String contact, int badgeNumber){
+        this.name = name;
         this.badgeNumber = badgeNumber;
         this.contactInfo = contact;
     }
@@ -18,6 +20,10 @@ public class Rangers {
 
     public int getBadgeNumber() {
         return badgeNumber;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getId() {

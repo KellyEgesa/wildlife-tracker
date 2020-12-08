@@ -18,7 +18,7 @@ public class Sql2oRangersTest {
     }
 
     private Rangers setUpRanger(){
-        return new Rangers("kelly.egesa@gmail.com", 158920);
+        return new Rangers("Kelly","kelly.egesa@gmail.com", 158920);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class Sql2oRangersTest {
     public void getAllReturnsAllTheRangers_2() {
         Rangers testRanger = setUpRanger();
         rangersDao.save(testRanger);
-        Rangers testSecondRanger = new Rangers("kelly123.egesa@gmail.com", 158320);
+        Rangers testSecondRanger = new Rangers("Kelly","kelly123.egesa@gmail.com", 158320);
         rangersDao.save(testSecondRanger);
         assertEquals(2, rangersDao.getAll().size());
     }
@@ -42,7 +42,7 @@ public class Sql2oRangersTest {
     public void findById_returnsCorrectRanger_true() {
         Rangers testRanger = setUpRanger();
         rangersDao.save(testRanger);
-        Rangers testSecondRanger = new Rangers("kelly123.egesa@gmail.com", 158320);
+        Rangers testSecondRanger = new Rangers("Kelly","kelly123.egesa@gmail.com", 158320);
         rangersDao.save(testSecondRanger);
         assertTrue(testSecondRanger.equals(rangersDao.findById(testSecondRanger.getId())));
     }
@@ -63,7 +63,7 @@ public class Sql2oRangersTest {
     public void deleteByIdDeletesRanger_1() {
         Rangers testRanger = setUpRanger();
         rangersDao.save(testRanger);
-        Rangers testSecondRanger = new Rangers("kelly123.egesa@gmail.com", 158320);
+        Rangers testSecondRanger = new Rangers("Kelly","kelly123.egesa@gmail.com", 158320);
         rangersDao.save(testSecondRanger);
         rangersDao.deleteById(testRanger.getId());
         assertEquals(1, rangersDao.getAll().size());
@@ -74,7 +74,7 @@ public class Sql2oRangersTest {
     public void clearAllRangersRemovesAllRangers_0() {
         Rangers testRanger = setUpRanger();
         rangersDao.save(testRanger);
-        Rangers testSecondRanger = new Rangers("kelly123.egesa@gmail.com", 158320);
+        Rangers testSecondRanger = new Rangers("Kelly","kelly123.egesa@gmail.com", 158320);
         rangersDao.save(testSecondRanger);
         rangersDao.clearAllRangers();
         assertEquals(0, rangersDao.getAll().size());

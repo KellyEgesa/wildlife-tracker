@@ -18,9 +18,10 @@ public class Sql2oRangers implements RangersDao {
 
     @Override
     public void save(Rangers rangers) {
-        String sql = "INSERT INTO rangers (contactInfo, badgeNumber) VALUES (:contact, :badgeNumber)";
+        String sql = "INSERT INTO rangers (name, contactInfo, badgeNumber) VALUES (:name, :contact, :badgeNumber)";
         try (Connection con = DB.sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
+                    .addParameter("name", rangers.getName())
                     .addParameter("contact", rangers.getContact())
                     .addParameter("badgeNumber", rangers.getBadgeNumber())
                     .executeUpdate()
