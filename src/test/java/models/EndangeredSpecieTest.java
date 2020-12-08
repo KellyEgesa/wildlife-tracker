@@ -1,3 +1,5 @@
+package models;
+
 import models.EndangeredSpecie;
 import org.junit.Test;
 
@@ -36,8 +38,23 @@ public class EndangeredSpecieTest {
     @Test
     public void equalsWorksCorrectly_true() {
         EndangeredSpecie testEndangeredSpecie = setUpAnimal();
-        EndangeredSpecie testSecondEndangeredSpecie = new EndangeredSpecie("Honey Badger", "Young", "Healthy");
+        EndangeredSpecie testSecondEndangeredSpecie = new EndangeredSpecie("Honey Badger", "Young", "healthy");
         assertTrue(testEndangeredSpecie.equals(testSecondEndangeredSpecie));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void endangeredSpecieThrowsErrorWhenAWrongPropertyIsSet() {
+        EndangeredSpecie testEndangeredSpecie = new EndangeredSpecie("Honey Badger", "Young", "heal");
+    }
+
+    @Test
+    public void healthCannotBeSetToTheWrongProperty() {
+        String argumentExceptionMessage = null;
+        try{
+            EndangeredSpecie testEndangeredSpecie = new EndangeredSpecie("Honey Badger", "Young", "heal");
+        } catch(IllegalArgumentException ex){
+            argumentExceptionMessage = ex.getMessage();
+        }
+        assertTrue(argumentExceptionMessage.equals("Bad parameter for health"));
+    }
 }

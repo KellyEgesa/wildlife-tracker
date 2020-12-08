@@ -1,3 +1,5 @@
+package models;
+
 import models.Rangers;
 import org.junit.Test;
 

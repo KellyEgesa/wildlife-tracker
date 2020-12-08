@@ -1,3 +1,5 @@
+package models;
+
 import models.Location;
 import org.junit.Test;
 

@@ -45,10 +45,6 @@ public class Sql2oRangers implements RangersDao {
         return null;
     }
 
-    @Override
-    public void update(int id, String contact) {
-
-    }
 
     @Override
     public void deleteById(int id) {

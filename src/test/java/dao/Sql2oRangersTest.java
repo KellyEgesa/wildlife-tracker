@@ -1,6 +1,9 @@
 package dao;
 
+import models.EndangeredSpecie;
+import models.Location;
 import models.Rangers;
+import models.Sightings;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -45,18 +48,6 @@ public class Sql2oRangersTest {
         Rangers testSecondRanger = new Rangers("Kelly","kelly123.egesa@gmail.com", 158320);
         rangersDao.save(testSecondRanger);
         assertTrue(testSecondRanger.equals(rangersDao.findById(testSecondRanger.getId())));
-    }
-
-    @Test
-    public void getRangerSightingsById() {
-    }
-
-    @Test
-    public void update() {
-        Rangers testRanger = setUpRanger();
-        rangersDao.save(testRanger);
-        rangersDao.update(testRanger.getId(), "moringa12@gmail.com");
-        assertEquals("moringa12@gmail.com", rangersDao.findById(testRanger.getId()).getContact());
     }
 
     @Test
