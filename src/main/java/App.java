@@ -97,8 +97,7 @@ public class App {
             int rangerId = Integer.parseInt(request.queryParams("rangerId"));
             Sightings newSightings = new Sightings(rangerId, locationId, animalId);
             sightingsDao.save(newSightings);
-            List<Sightings> allSightings = sightingsDao.getAll();
-            model.put("sightings", allSightings);
+            response.redirect("/");
             return new ModelAndView(model, "index.hbs");
         }), new HandlebarsTemplateEngine());
 
@@ -106,8 +105,31 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             int sightingsId = Integer.parseInt(request.params("id"));
             sightingsDao.deleteById(sightingsId);
-            List<Sightings> allSightings = sightingsDao.getAll();
-            model.put("sightings", allSightings);
+            response.redirect("/");
+            return new ModelAndView(model, "index.hbs");
+        }), new HandlebarsTemplateEngine());
+
+        Spark.get("/post/delete/animal/:id", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int animalId = Integer.parseInt(request.params("id"));
+            animalDao.deleteById(animalId);
+            response.redirect("/animals");
+            return new ModelAndView(model, "index.hbs");
+        }), new HandlebarsTemplateEngine());
+
+        Spark.get("/post/delete/location/:id", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int locationId = Integer.parseInt(request.params("id"));
+            locationDao.deleteById(locationId);
+            response.redirect("/location");
+            return new ModelAndView(model, "index.hbs");
+        }), new HandlebarsTemplateEngine());
+
+        Spark.get("/post/delete/ranger/:id", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int rangerId = Integer.parseInt(request.params("id"));
+            rangersDao.deleteById(rangerId);
+            response.redirect("/rangers");
             return new ModelAndView(model, "index.hbs");
         }), new HandlebarsTemplateEngine());
 
@@ -115,6 +137,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             Location newLocation = new Location(request.queryParams("location"));
             locationDao.save(newLocation);
+            response.redirect("/location");
             return new ModelAndView(model, "form-location.hbs");
         }), new HandlebarsTemplateEngine());
 
@@ -125,6 +148,7 @@ public class App {
                     request.queryParams("contactInfo"),
                     badgeNumber);
             rangersDao.save(newRanger);
+            response.redirect("/rangers");
             return new ModelAndView(model, "form-rangers.hbs");
         }), new HandlebarsTemplateEngine());
 
@@ -140,7 +164,8 @@ public class App {
                         , request.queryParams("age"));
                 nonEndangeredSpecieDao.save(newNonEndangered);
             }
-            return new ModelAndView(model, "form-endagered.hbs");
+            response.redirect("/animals");
+            return new ModelAndView(model, "animal.hbs");
         }, new HandlebarsTemplateEngine());
 
 
