@@ -1,3 +1,5 @@
+package models;
+
 import models.EndangeredSpecie;
 import org.junit.Test;
 

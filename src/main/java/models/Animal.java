@@ -8,9 +8,18 @@ public class Animal {
     private String type;
     private int id;
 
+    private final String AGE_YOUNG = "Young";
+    private final String AGE_NEW_BORN = "newborn";
+    private final String AGE_ADULT = "adult";
+
     public Animal(String name, String age){
         this.name = name;
-        this.age = age;
+        if(age.equals(AGE_ADULT) || age.equals(AGE_NEW_BORN) || age.equals(AGE_YOUNG)){
+            this.age = age;
+        }else {
+            throw new IllegalArgumentException("Bad parameter for age");
+        }
+
     }
 
     public String getName() {
