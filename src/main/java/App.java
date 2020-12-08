@@ -78,6 +78,29 @@ public class App {
             return new ModelAndView(model, "form-location.hbs");
         }, new HandlebarsTemplateEngine());
 
+        Spark.get("add/sightings", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Animal> allAnimals = animalDao.getAll();
+            model.put("animals", allAnimals);
+            List<Location> allLocations = locationDao.getAll();
+            model.put("locations", allLocations);
+            List<Rangers> allRangers = rangersDao.getAll();
+            model.put("rangers", allRangers);
+            return new ModelAndView(model, "form-sightings.hbs");
+        },new HandlebarsTemplateEngine());
+
+        post("/post/new/sighting", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int animalId = Integer.parseInt(request.queryParams("animalId"));
+            int locationId = Integer.parseInt(request.queryParams("locationId"));
+            int rangerId = Integer.parseInt(request.queryParams("rangerId"));
+            Sightings newSightings = new Sightings(rangerId, locationId, animalId);
+            sightingsDao.save(newSightings);
+            List<Sightings> allSightings = sightingsDao.getAll();
+            model.put("sightings", allSightings);
+            return new ModelAndView(model, "index.hbs");
+        }), new HandlebarsTemplateEngine());
+
         post("/post/new/location", ((request, response) -> {
             Map<String, Object> model = new HashMap<>();
             Location newLocation = new Location(request.queryParams("location"));
@@ -97,7 +120,7 @@ public class App {
 
         post("/post/new/animal", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            if (request.queryParams("health").isEmpty()) {
+            if (request.queryParams("health") != null) {
                 EndangeredSpecie newEndangered = new EndangeredSpecie(request.queryParams("name"),
                         request.queryParams("age"),
                         request.queryParams("health"));
