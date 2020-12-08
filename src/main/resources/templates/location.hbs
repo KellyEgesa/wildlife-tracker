@@ -8,6 +8,7 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
+                <th scope="col">Sightings</th>
                 <th scope="col">Delete</th>
             </tr>
             </thead>
@@ -16,6 +17,7 @@
                 <tr>
                     <th scope="row">{{id}}</th>
                     <td>{{name}}</td>
+                    <td><a href="/sighting/location/{{id}}"><button type="button" class="btn btn-info">See Sightings</button></a></td>
                     <td><a href="/post/delete/location/{{id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>
             {{/each}}

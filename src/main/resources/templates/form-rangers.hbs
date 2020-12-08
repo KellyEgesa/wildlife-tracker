@@ -1,7 +1,7 @@
 {{#partial "content"}}
     <div class="full">
-        <div class="card mx-auto p-2" id="cardForm">
-            <h2>ADD A NEW RANGER</h2>
+        <div class="card mt-3 bg-success border-warning  mx-auto p-2" style="width: 40rem;">
+            <h2 class="text-center">ADD A NEW RANGER</h2>
             <form action="/post/new/ranger" method="post">
                 <div class="form-group">
                     <label for="name">Ranger Name</label>
@@ -15,7 +15,7 @@
                     <label for="age">Ranger Badge Number</label>
                     <input type="number" class="form-control" id="badgeNumber" name="badgeNumber" required>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-info m-2">Submit</button>
             </form>
         </div>
     </div>

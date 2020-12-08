@@ -1,7 +1,7 @@
 {{#partial "content"}}
     <div class="full">
-        <div class="card mx-auto p-2" id="cardForm">
-            <h2>ADD AN ENDANGERED SPECIE ANIMAL</h2>
+        <div class="card mt-3 bg-success border-warning  mx-auto p-2" style="width: 40rem;">
+            <h2 class="text-center">ADD AN ENDANGERED SPECIE ANIMAL</h2>
             <form action="/post/new/animal" method="post">
                 <div class="form-group">
                     <label for="name">Animal Name</label>
@@ -9,13 +9,22 @@
                 </div>
                 <div class="form-group">
                     <label for="age">Animal Age</label>
+                    <select class="form-control" name="age" required>
+                        <option value="newborn">New born</option>
+                        <option value="young">Young</option>
+                        <option value="adult">Adult</option>
+                    </select>
                     <input type="text" class="form-control" id="age" name="age" required>
                 </div>
                 <div class="form-group">
                     <label for="age">Animal Health</label>
-                    <input type="text" class="form-control" id="health" name="health" required>
+                    <select class="form-control" name="health" required>
+                        <option value="healthy">Healthy</option>
+                        <option value="ill">Ill</option>
+                        <option value="okay">Okay</option>
+                    </select>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-info m-2">Submit</button>
             </form>
         </div>
     </div>
