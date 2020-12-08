@@ -6,6 +6,7 @@ import spark.ModelAndView;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,6 +97,15 @@ public class App {
             int rangerId = Integer.parseInt(request.queryParams("rangerId"));
             Sightings newSightings = new Sightings(rangerId, locationId, animalId);
             sightingsDao.save(newSightings);
+            List<Sightings> allSightings = sightingsDao.getAll();
+            model.put("sightings", allSightings);
+            return new ModelAndView(model, "index.hbs");
+        }), new HandlebarsTemplateEngine());
+
+        Spark.get("/post/delete/sighting/:id", ((request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int sightingsId = Integer.parseInt(request.params("id"));
+            sightingsDao.deleteById(sightingsId);
             List<Sightings> allSightings = sightingsDao.getAll();
             model.put("sightings", allSightings);
             return new ModelAndView(model, "index.hbs");

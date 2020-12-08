@@ -1,6 +1,20 @@
 {{#partial "content"}}
-<h1>SIGHTINGS</h1>
+<h1 class="text-center">SIGHTINGS</h1>
+<a href="/add/sightings"><button type="button" class="btn btn-success">Add Sighting</button></a>
 {{#if sightings}}
+    <div class="row">
+    {{#each sightings}}
+        <div class="card text-white text-center bg-dark m-2" style="width: 18rem;">
+            <div class="card-header"><h5 class="card-title">{{animal.name}}</h5></div>
+            <div class="card-body">
+                <p class="card-text">Sighted by: {{rangers.name}}</p>
+                <p class="card-text">At: {{location.name}}</p>
+                <p class="card-subtitle mb-2 text-muted text-white">{{lastSighting}}</p>
+                <a href="/post/delete/sighting/{{id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+            </div>
+        </div>
+    {{/each}}
+    </div>
 {{else}}
     <div>
         Nothing has been added
