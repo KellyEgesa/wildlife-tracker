@@ -1,0 +1,18 @@
+{{#partial "content"}}
+    <div class="full">
+        <div class="card mx-auto p-2" id="cardForm">
+            <h2>ADD A NON-ENDANGERED SPECIE ANIMAL</h2>
+            <form action="/post/new/animal" method="post">
+                <div class="form-group">
+                    <label for="name">Animal Name</label>
+                    <input type="text" class="form-control" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Animal Age</label>
+                    <input type="text" class="form-control" id="age" name="age" required>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+{{/partial}}{{>layout.hbs}}
