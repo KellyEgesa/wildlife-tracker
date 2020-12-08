@@ -1,0 +1,24 @@
+{{#partial "content"}}
+    <h1 class="text-center">ANIMALS</h1>
+    <a href="/add/animals"><button type="button" class="btn btn-success">Add Animal</button></a>
+    {{#if animals}}
+        <div class="row">
+        {{#each animals}}
+            <div class="card text-white text-center bg-dark m-2" style="width: 18rem;">
+                <div class="card-header"><h5 class="card-title">{{name}}</h5></div>
+                <div class="card-body">
+                    <p class="card-text">Age: {{age}}</p>
+                    <p class="card-text">Type: {{type}}</p>
+                    <a href="/sighting/animals/{{id}}"><button type="button" class="btn btn-info">See Sightings</button>
+                    <a href="/post/delete/animal/{{id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    {{else}}
+        <div>
+            Nothing has been added
+        </div>
+    {{/if}}
+{{/partial}}
+{{> layout.hbs}}

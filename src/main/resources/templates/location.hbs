@@ -1,0 +1,32 @@
+{{#partial "content"}}
+    <h1 class="text-center">LOCATION</h1>
+    <a href="/add/location"><button type="button" class="btn btn-success mb-2">Add Location</button></a>
+
+    {{#if locations}}
+        <table class="table table-hover table-dark" style="width: 50rem;">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Sightings</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each locations}}
+                <tr>
+                    <th scope="row">{{id}}</th>
+                    <td>{{name}}</td>
+                    <td><a href="/sighting/location/{{id}}"><button type="button" class="btn btn-info">See Sightings</button></a></td>
+                    <td><a href="/post/delete/location/{{id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <div>
+            Nothing has been added
+        </div>
+    {{/if}}
+{{/partial}}
+{{> layout.hbs}}

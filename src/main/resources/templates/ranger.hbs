@@ -1,0 +1,24 @@
+{{#partial "content"}}
+    <h1 class="text-center">RANGERS</h1>
+    <a href="/add/ranger"><button type="button" class="btn btn-success">Add Ranger</button></a>
+    {{#if rangers}}
+        <div class="row">
+            {{#each rangers}}
+                <div class="card text-white text-center bg-dark m-2" style="width: 18rem;">
+                    <div class="card-header"><h5 class="card-title">{{name}}</h5></div>
+                    <div class="card-body">
+                        <p class="card-text">Badge Number: {{badgeNumber}}</p>
+                        <p class="card-text">Contact Information: {{contact}}</p>
+                        <a href="/sighting/ranger/{{id}}"><button type="button" class="btn btn-info">See Sightings</button></a>
+                        <a href="/post/delete/ranger/{{id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div>
+            Nothing has been added
+        </div>
+    {{/if}}
+{{/partial}}
+{{> layout.hbs}}

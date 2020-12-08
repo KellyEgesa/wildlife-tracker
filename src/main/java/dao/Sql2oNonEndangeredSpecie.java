@@ -1,31 +1,31 @@
 package dao;
 
+import models.NonEndangeredSpecie;
 import org.sql2o.Connection;
 
 import java.util.List;
 
-public class NonEndangeredSpecie {
-    private final String SPECIE_TYPE = "Endangered";
+public class Sql2oNonEndangeredSpecie implements NonEndangeredAnimalDao {
+    private final String SPECIE_TYPE = "NonEndangered";
 
     @Override
-    public List<EndangeredSpecie> getAll() {
+    public List<NonEndangeredSpecie> getAllNonEndangeredSpecie() {
         String sql = "SELECT * FROM animal where type = :type";
         try(Connection con = DB.sql2o.open()){
             return con.createQuery(sql)
                     .addParameter("type", SPECIE_TYPE)
                     .throwOnMappingFailure(false)
-                    .executeAndFetch(EndangeredSpecie.class);
+                    .executeAndFetch(NonEndangeredSpecie.class);
         }
     }
 
     @Override
-    public void save(EndangeredSpecie animal) {
-        String sql = "INSERT INTO animal (name, age, health, type) VALUES (:name, :age, :health, :type)";
+    public void save(NonEndangeredSpecie animal) {
+        String sql = "INSERT INTO animal (name, age, type) VALUES (:name, :age, :type)";
         try(Connection con = DB.sql2o.open()){
             int id = (int)con.createQuery(sql)
                     .addParameter("name", animal.getName())
                     .addParameter("age", animal.getAge())
-                    .addParameter("health", animal.getHealth())
                     .addParameter("type", SPECIE_TYPE)
                     .executeUpdate()
                     .getKey();
@@ -35,29 +35,7 @@ public class NonEndangeredSpecie {
     }
 
     @Override
-    public EndangeredSpecie findById(int id) {
-        String sql = "SELECT * FROM animal WHERE id =:id";
-        try(Connection con = DB.sql2o.open()){
-            return con.createQuery(sql)
-                    .addParameter("id", id)
-                    .throwOnMappingFailure(false)
-                    .executeAndFetchFirst(EndangeredSpecie.class);
-        }
-    }
-
-    @Override
-    public void deleteById(int id) {
-        String sql = "DELETE FROM animal WHERE id =:id";
-        try(Connection con = DB.sql2o.open()){
-            con.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeUpdate();
-        }
-
-    }
-
-    @Override
-    public void clearAllAnimals() {
+    public void clearAllNonEndangeredAnimals() {
         String sql = "DELETE FROM animal WHERE type = :type";
         try(Connection con = DB.sql2o.open()){
             con.createQuery(sql)

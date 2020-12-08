@@ -3,21 +3,27 @@ package models;
 import java.util.Objects;
 
 public class Rangers {
-    private String contact;
+    private String contactInfo;
     private int badgeNumber;
+    private String name;
     private int id;
 
-    public Rangers(String contact, int badgeNumber){
+    public Rangers(String name ,String contact, int badgeNumber){
+        this.name = name;
         this.badgeNumber = badgeNumber;
-        this.contact = contact;
+        this.contactInfo = contact;
     }
 
     public String getContact() {
-        return contact;
+        return contactInfo;
     }
 
     public int getBadgeNumber() {
         return badgeNumber;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getId() {

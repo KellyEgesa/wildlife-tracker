@@ -2,9 +2,10 @@ package models;
 
 import java.util.Objects;
 
-public abstract class Animal {
+public class Animal {
     private String name;
     private String age;
+    private String type;
     private int id;
 
     public Animal(String name, String age){
@@ -22,6 +23,10 @@ public abstract class Animal {
 
     public int getId() {
         return id;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void setId(int id) {

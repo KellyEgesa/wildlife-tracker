@@ -65,5 +65,11 @@ public class Sql2oLocationTest {
         assertTrue(testSecondLocation.equals(locationDao.getAll().get(0)));
     }
 
-
+    @Test
+    public void updateUpdatesLocationName() {
+        Location testLocation = setUpLocation();
+        locationDao.save(testLocation);
+        locationDao.update(testLocation.getId(), "Zone A");
+        assertEquals("Zone A", locationDao.findById(testLocation.getId()).getName());
+    }
 }

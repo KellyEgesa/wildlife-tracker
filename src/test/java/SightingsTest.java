@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 public class SightingsTest {
     private Sightings setUpSightings(){
         Animal testAnimal =  new EndangeredSpecie("Honey Badger", "Young", "healthy");
-        Rangers testRanger =  new Rangers("kelly.egesa@gmail.com", 158920);
+        Rangers testRanger =  new Rangers("Kelly","kelly.egesa@gmail.com", 158920);
         Location testLocation = new Location("Near the River");
         testAnimal.setId(1);
         testRanger.setId(1);
@@ -49,7 +49,7 @@ public class SightingsTest {
     public void equalsWorksCorrectly_true() {
         Sightings testSighting = setUpSightings();
         Animal testAnimal =  new EndangeredSpecie("Honey Badger", "Young", "healthy");
-        Rangers testRanger =  new Rangers("kelly.egesa@gmail.com", 158920);
+        Rangers testRanger =  new Rangers("Kelly Egesa","kelly.egesa@gmail.com", 158920);
         Location testLocation = new Location("Near the River");
         testAnimal.setId(1);
         testRanger.setId(1);
